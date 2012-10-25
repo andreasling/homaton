@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Light Switches</title>
+    <meta name="viewport" content="width=200, initial-scale=1.5, maximum-scale=1.5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <form method="post">
+      <legend>Lights Switches</legend>
+      <div class="input-prepend input-append">
+        <span class="add-on">1</span>
+        <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
+        <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
+      </div>
+      <div class="input-prepend input-append">
+        <span class="add-on">2</span>
+        <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
+        <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
+      </div>
+      <div class="input-prepend input-append">
+        <span class="add-on">3</span>
+        <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
+        <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
+      </div>
+      <div class="input-prepend input-append">
+        <span class="add-on">4</span>
+        <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
+        <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
+      </div>
+      <div class="input-prepend input-append">
+        <span class="add-on">all</span>
+        <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
+        <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
+      </div>
+   </form>
+   <script src="http://code.jquery.com/jquery-latest.js"></script>
+   <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
+   <script type="text/javascript">
+ $(function() {
+  $("button[name=\"command\"]").click(function(e) {
+    e.preventDefault();
+
+    // TODO: post to api
+    var args = $(this).attr("value").split(":");
+    $.post("api/" + args[0], args[1]);
+  });
+});
+   </script>
+  </body>
+</html>
