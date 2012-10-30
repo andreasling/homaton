@@ -29,7 +29,8 @@ render = web.template.render("templates/")
 urls = (
 #  '/api/form', 'api_form',
   "/api/([0-9a-z]+)", "api",
-  "/", "index"
+  "/", "index",
+  "/favicon.ico", "favicon"
 )
 
 #class api_form:
@@ -57,6 +58,10 @@ class index:
     switchToStateBackground(switch, state)
     web.header("Cache-Control", "no-cache")
     return render.index()
+
+class favicon:
+  def GET(self):
+    raise web.seeother("/static/favicon.png")
 
 def switchToStateBackground(switch, state):
     thread.start_new_thread(switchToState, (switch, state))
