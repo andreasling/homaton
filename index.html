@@ -1,45 +1,60 @@
 <!DOCTYPE html>
-<html manifest="homaton.appcache">
+<html manifest="static/homaton.appcache">
   <head>
     <title>Light Switches</title>
     <meta name="viewport" content="width=200, initial-scale=1.5, maximum-scale=1.5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/icon.png" />
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/icon.png" type="image/png">
+    <style type="text/css">
+.input-append .add-on { width: 80px; }
+    </style>
   </head>
   <body>
-    <form method="post">
-      <legend>Lights Switches</legend>
-      <div class="input-prepend input-append">
-        <span class="add-on">1</span>
-        <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">2</span>
-        <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">3</span>
-        <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">4</span>
-        <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">all</span>
-        <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
-      </div>
-   </form>
-   <script src="http://code.jquery.com/jquery-latest.js"></script>
-   <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
-   <script type="text/javascript">
- $(function() {
+    <div class="container">
+      <form method="post">
+        <legend>Light Switches</legend>
+        <div class="input-prepend input-append">
+          <span class="add-on">vardagsrum</span>
+          <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">sovrum</span>
+          <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">hall</span>
+          <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">&ouml;vrigt</span>
+          <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">alla</span>
+          <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
+        </div>
+        <!-- <div class="input-prepend input-append">
+          <span class="add-on">dator</span>
+          <button type="sumbit" name="command" value="computer:wakeonlan"  class="btn" style="width: 92px; "><i class="icon-play-circle"></i></button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">dator</span>
+          <span class="add-on"><i class="icon-ok-circle"></i></span>
+        </div> -->
+      </form>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript">
+$(function() {
   $("button[name=\"command\"]").click(function(e) {
     e.preventDefault();
 
@@ -48,6 +63,6 @@
     $.post("api/" + args[0], args[1]);
   });
 });
-   </script>
+    </script>
   </body>
 </html>

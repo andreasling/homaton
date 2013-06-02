@@ -13,38 +13,40 @@
     </style>
   </head>
   <body>
-    <form method="post">
-      <legend>Lights Switches</legend>
-      <div class="input-prepend input-append">
-        <span class="add-on">vardagsrum</span>
-        <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">sovrum</span>
-        <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">hall</span>
-        <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">&ouml;vrigt</span>
-        <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
-      </div>
-      <div class="input-prepend input-append">
-        <span class="add-on">alla</span>
-        <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
-        <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
-      </div>
-   </form>
-   <script src="http://code.jquery.com/jquery-latest.js"></script>
-   <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
-   <script type="text/javascript">
-  $$(function() {
+    <div class="container">
+      <form method="post">
+        <legend>Light Switches</legend>
+        <div class="input-prepend input-append">
+          <span class="add-on">vardagsrum</span>
+          <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">sovrum</span>
+          <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">hall</span>
+          <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">&ouml;vrigt</span>
+          <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
+        </div>
+        <div class="input-prepend input-append">
+          <span class="add-on">alla</span>
+          <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
+          <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
+        </div>
+      </form>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript">
+$$(function() {
   $$("button[name=\"command\"]").click(function(e) {
     e.preventDefault();
 
@@ -53,6 +55,6 @@
     $$.post("api/" + args[0], args[1]);
   });
 });
-   </script>
+    </script>
   </body>
 </html>
