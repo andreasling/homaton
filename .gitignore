@@ -28,3 +28,11 @@ pip-log.txt
 
 #ignore thumbnails created by windows
 Thumbs.db
+
+# logs, standard out, temporary files et c
+access_log.txt
+error_log.txt
+nohup.out
+std.err
+std.out
+stdio.log
