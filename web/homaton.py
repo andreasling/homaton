@@ -51,7 +51,8 @@ class api:
 
 class index:
   def GET(self):
-    return render.index()
+    #return render.index()
+    raise web.seeother("/static/index.html");
   def POST(self):
     input = web.input()
     command = input.command
