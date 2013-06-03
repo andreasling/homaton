@@ -4,6 +4,7 @@ import time
 import web
 import RPi.GPIO as GPIO
 import thread
+import socket
 
 # GPIO pin config
 #gpios = [21, 22, 23, 24, 10, 9, 25, 11, 8, 7]
@@ -43,6 +44,13 @@ class api:
   def POST(self, switch):
     print "api:"
     print switch
+
+    if switch == "wakeonlan":
+      s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+      s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+      s.sendto("\xFF"*6 + "\x6C\xF0\x49\xE1\xB5\xC2"*16, ("192.168.0.255", 7))
+      return "ok:wakeonlan"
+
     state = web.data()
     print state
     switchToStateBackground(switch, state)
