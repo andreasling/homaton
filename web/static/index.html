@@ -1,58 +1,79 @@
 <!DOCTYPE html>
-<html manifest="homaton.appcache">
+<html><!-- manifest="homaton.appcache" -->
   <head>
     <title>Light Switches</title>
     <meta name="viewport" content="width=200, initial-scale=1.5, maximum-scale=1.5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon.png" />
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="icon.png" type="image/png">
     <style type="text/css">
-.input-append .add-on { width: 80px; }
+.input-group .input-group-addon { width: 80px; }
+div.row { margin-bottom: 0.5em; }
+form { max-width: 160px; }
     </style>
   </head>
   <body>
     <div class="container">
       <form method="post">
-        <legend>Light Switches</legend>
-        <div>
-          <div class="input-prepend input-append">
-            <span class="add-on">vardagsrum</span>
-            <button type="sumbit" name="command" value="1:on"  class="btn">on</button>
-            <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
+        <div class="row">
+          <div class="">
+            <legend>Light Switches</legend>
           </div>
         </div>
-        <div class="input-prepend input-append">
-          <span class="add-on">sovrum</span>
-          <button type="sumbit" name="command" value="2:on"  class="btn">on</button>
-          <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
+        <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">vardagsrum</span>
+            <span class="input-group-btn">
+              <button type="sumbit" name="command" value="1:on"  class="btn btn-default">on</button>
+              <button type="sumbit" name="command" value="1:off" class="btn btn-inverse">off</button>
+            </span>
+          </div>
         </div>
-        <br>
-        <div class="input-prepend input-append">
-          <span class="add-on">hall</span>
-          <button type="sumbit" name="command" value="3:on"  class="btn">on</button>
-          <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
+        <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">sovrum</span>
+            <span class="input-group-btn">
+              <button type="sumbit" name="command" value="2:on"  class="btn btn-default">on</button>
+              <button type="sumbit" name="command" value="2:off" class="btn btn-inverse">off</button>
+            </span>
+          </div>
         </div>
-        <br>
-        <div class="input-prepend input-append">
-          <span class="add-on">&ouml;vrigt</span>
-          <button type="sumbit" name="command" value="4:on"  class="btn">on</button>
-          <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
+        <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">hall</span>
+            <span class="input-group-btn">
+              <button type="sumbit" name="command" value="3:on"  class="btn btn-default">on</button>
+              <button type="sumbit" name="command" value="3:off" class="btn btn-inverse">off</button>
+            </span>
+          </div>
         </div>
-        <br>
-        <div class="input-prepend input-append">
-          <span class="add-on">alla</span>
-          <button type="sumbit" name="command" value="all:on"  class="btn">on</button>
-          <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
+        <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">&ouml;vrigt</span>
+            <span class="input-group-btn">
+              <button type="sumbit" name="command" value="4:on"  class="btn btn-default">on</button>
+              <button type="sumbit" name="command" value="4:off" class="btn btn-inverse">off</button>
+            </span>
+          </div>
         </div>
-        <!-- <div class="input-prepend input-append">
-          <span class="add-on">dator</span>
+        <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">alla</span>
+            <span class="input-group-btn">
+              <button type="sumbit" name="command" value="all:on"  class="btn btn-default">on</button>
+              <button type="sumbit" name="command" value="all:off" class="btn btn-inverse">off</button>
+            </span>
+          </div>
+        </div>
+        <!-- <div class="input-group">
+          <span class="input-group-addon">dator</span>
           <button type="sumbit" name="command" value="computer:wakeonlan"  class="btn" style="width: 92px; "><i class="icon-play-circle"></i></button>
         </div>
-        <div class="input-prepend input-append">
-          <span class="add-on">dator</span>
-          <span class="add-on"><i class="icon-ok-circle"></i></span>
+        <div class="input-group">
+          <span class="input-group-addon">dator</span>
+          <span class="input-group-addon"><i class="icon-ok-circle"></i></span>
         </div> -->
       </form>
     </div>
