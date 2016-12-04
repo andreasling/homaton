@@ -20,9 +20,18 @@ h3 {
   font-variant: small-caps;
   font-weight: bold;
 }
+#alert-message {
+  margin-top: 1em;
+  font-size: xx-small;
+}
     </style>
   </head>
   <body>
+    <div id="alert" class="hide alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Oh snap!</strong> Something went wrong! :(
+      <div id="alert-message">...</div>
+    </div>
     <div class="container">
       <form method="post">
         <div class="row">
@@ -37,8 +46,8 @@ h3 {
             <div class="input-group">
               <span class="input-group-addon">matsal</span>
               <span class="input-group-btn">
-                <button type="submit" name="command" value="1:on"  class="btn btn-default">on</button>
-                <button type="submit" name="command" value="1:off" class="btn btn-inverse">off</button>
+                <button type="submit" name="command" data-switch="1" data-state="on"  class="btn btn-default"><div>on</div></button>
+                <button type="submit" name="command" data-switch="1" data-state="off" class="btn btn-inverse">off</button>
               </span>
             </div>
           </div>
@@ -48,8 +57,8 @@ h3 {
             <div class="input-group">
               <span class="input-group-addon">trappa</span>
               <span class="input-group-btn">
-                <button type="submit" name="command" value="2:on"  class="btn btn-default">on</button>
-                <button type="submit" name="command" value="2:off" class="btn btn-inverse">off</button>
+                <button type="submit" name="command" data-switch="2" data-state="on"  class="btn btn-default">on</button>
+                <button type="submit" name="command" data-switch="2" data-state="off" class="btn btn-inverse">off</button>
               </span>
             </div>
           </div>
@@ -59,8 +68,8 @@ h3 {
             <div class="input-group">
               <span class="input-group-addon">baksida</span>
               <span class="input-group-btn">
-                <button type="submit" name="command" value="3:on"  class="btn btn-default">on</button>
-                <button type="submit" name="command" value="3:off" class="btn btn-inverse">off</button>
+                <button type="submit" name="command" data-switch="3" data-state="on"  class="btn btn-default">on</button>
+                <button type="submit" name="command" data-switch="3" data-state="off" class="btn btn-inverse">off</button>
               </span>
             </div>
           </div>
@@ -70,26 +79,56 @@ h3 {
             <div class="input-group">
               <span class="input-group-addon">sovrum</span>
               <span class="input-group-btn">
-                <button type="submit" name="command" value="4:on"  class="btn btn-default">on</button>
-                <button type="submit" name="command" value="4:off" class="btn btn-inverse">off</button>
+                <button type="submit" name="command" data-switch="4" data-state="on"  class="btn btn-default">on</button>
+                <button type="submit" name="command" data-switch="4" data-state="off" class="btn btn-inverse">off</button>
               </span>
             </div>
           </div>
         </div>
       </form>
     </div>
-    <script src="jquery-2.0.2.min.js"></script>
-    <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script> -->
     <script type="text/javascript">
-$(function() {
-  $("button[name=\"command\"]").click(function(e) {
+
+var alertElement = document.getElementById("alert");
+var alertMessageElement = document.getElementById("alert-message");
+
+document.querySelectorAll('button[name="command"]').forEach(button => {
+  button.onclick = e => {
+
     e.preventDefault();
 
-    // TODO: post to api
-    var args = $(this).attr("value").split(":");
-    $.post("/api/" + args[0], args[1]);
-  });
+    var button = e.currentTarget;
+    var switchNumber = parseInt(button.dataset.switch);
+    var state = button.dataset.state;
+
+    console.log(switchNumber, state);
+
+    fetch(`api/${switchNumber}`, {
+      method: "POST",
+      body: state
+    }).then(response => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        console.error(response.status, response.statusText);
+        alertMessageElement.innerText = `${response.status}: ${response.statusText}`;
+        alertElement.classList.remove("hide");
+      }
+    }).then(text => {
+      console.log(text);
+    }).catch(error => {
+      console.error(error);
+      alertMessageElement.innerText = `${error.message}`;
+      alertElement.classList.remove("hide");
+    });
+  };
 });
+
+alertElement.querySelector("button.close").onclick = e => {
+  alertElement.classList.add("hide");
+  alertMessageElement.innerText = "";
+};
+
     </script>
   </body>
 </html>
