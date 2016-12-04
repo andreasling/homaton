@@ -1,0 +1,21 @@
+homaton setup summary
+=============
+nginx serving static html and assets, python script/application api over remote controlled lights via gpio. supervisor keeps api alive.
+
+nginx
+=====
+install nginx: sudo apt-get install nginx.
+config /etc/nginx/sites-available/homaton to server static files from  /var/www/homaton/, proxy_pass /api/ to python application.
+disable default and enable homaton using symlink to /etc/nginx/sites-enabled
+reload and start nginx: sudo /etc/init.d/nginx reload, sudo /etc/init.d/nginx start
+make nginx start at boot: sudo /usr/sbin/update-rc.d -f nginx defaults
+
+supervisor
+==========
+install supervisor: sudo apt-get install supervisor
+config: /etc/supervisor/conf.d/homaton.conf to start python app, needs root due to gpio access
+update and start using supervisorctl
+
+homaton api
+===========
+python application using web.py, RPi.GPIO to provide an api over the GPIO pins to control buttons of a remote control for lights
